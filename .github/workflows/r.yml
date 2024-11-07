@@ -8,6 +8,8 @@ on:
 jobs:
   echo:
     runs-on: ubuntu-latest
-    if: github.ref_type == 'tag' && startsWith(github.ref_name, 'polka-v')
     steps:
-      - run: echo "hey"
+      - run: echo ${github.ref_name}
+        if: github.ref_type == 'tag' && startsWith(github.ref_name, 'polka-v')
+      - run: echo "some other thing"
+        if: github.ref_type == 'tag' && !startsWith(github.ref_name, 'polka-v')
