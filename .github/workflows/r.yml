@@ -2,13 +2,12 @@ name: Release
 
 on:
   push:
-    branches:
-      - main
     tags:
       - "**"
 
 jobs:
   echo:
     runs-on: ubuntu-latest
+    if: github.ref_type == 'tag' && startsWith(github.ref_name, 'polka-v')
     steps:
       - run: echo "hey"
