@@ -3,9 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - "**"
-    branches:
-      - "**"
+      - "**-v*.*.*"
 
 jobs:
   echo:
@@ -17,10 +15,5 @@ jobs:
           - a
           - b
 
-    if: github.ref_type == 'tag' && startsWith(github.ref_name, matrix.tag_name)
-
     steps:
       - run: echo ${github.ref_name}
-        if: github.ref_type == 'tag' && startsWith(github.ref_name, 'polka-v')
-      - run: echo "some other thing"
-        if: github.ref_type == 'tag' && !startsWith(github.ref_name, 'polka-v')
