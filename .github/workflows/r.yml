@@ -8,6 +8,15 @@ on:
 jobs:
   echo:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        tag_name:
+          - a
+          - b
+
+    if: github.ref_type == 'tag' && startsWith(github.ref_name, matrix.tag_name)
+
     steps:
       - run: echo ${github.ref_name}
         if: github.ref_type == 'tag' && startsWith(github.ref_name, 'polka-v')
