@@ -9,11 +9,5 @@ jobs:
   echo:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        tag_name:
-          - a
-          - b
-
     steps:
-      - run: echo ${github.ref_name}
+      - run: echo "sup"
